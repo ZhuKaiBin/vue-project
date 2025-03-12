@@ -7,11 +7,57 @@
     <button @click="ChangeCar">更改车</button>
     <!-- <h2>{{ messageOPtionsl }}</h2>
     <button @click="changeMessage">改变信息</button> -->
+
+    <hr>
+    <secDemoVue ></secDemoVue>
+    <button @click="logChildData">获取子组件数据</button>
 </template>
 
 <!-- 组合式API -->
 <script setup lang="ts" name="123245">
-import { computed, reactive, ref, watch } from 'vue';
+import {onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted, computed, reactive, ref, watch } from 'vue';
+import secDemoVue from '@/components/secComponent/secDemo.vue'
+
+import useDog from '@/hooks/useDog'
+
+const {dogList, addDog} = useDog()
+
+
+
+
+
+const childRef = ref<{ a: number } | null>(null);
+
+onBeforeMount(() => {
+  console.log("beforeMount");
+});
+
+onMounted(() => {
+  console.log("mounted");
+});
+
+onBeforeUpdate(() => {
+  console.log("beforeUpdate");
+});
+
+onUpdated(() => {
+  console.log("updated");
+});
+
+onMounted(() => {
+  if (childRef.value) {
+    console.log("子组件的 a:", childRef.value.a);
+  }
+});
+
+const logChildData = () => {
+  if (childRef.value) {
+    console.log("子组件的 a:", childRef.value.a);
+  } else {
+    console.log("子组件尚未加载");
+  }
+};
+
 
 const age = ref(25);  // 使用 ref 创建响应式变量
 const person = reactive({

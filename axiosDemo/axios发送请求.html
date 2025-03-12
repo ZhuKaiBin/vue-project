@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div>
+        <button class="Get">Get</button><br>
+        <button class="Post">Post</button><br>
+        <button class="delete">delete</button><br>
+        <button class="put">put</button><br>
+    </div>
+
+
+    
+  </body>
+
+  <script>
+
+class Person {
+    constructor(name, age) {
+        this.name = name; // 实例属性，每个对象都有自己的值
+        this.age = age;   // 实例属性
+    }
+
+    sayHello() {
+        console.log(`Hello, my name is ${this.name},my age is ${this.age}`);
+    }
+}
+
+//如果添加的原型方法与类里面的一样的话，那么会执行原型的方法，覆盖类里面的方法
+Person.prototype.SayHello = function() {
+    console.log(`Hello, my prototype_name is ${this.name},my prototype_age is ${this.age}`);
+}
+
+Person.prototype.age = '180';
+
+console.log(Person.prototype.age); // { sayHello: [Function: sayHello] }
+
+const p1 = new Person("Alice", 25);
+const p2 = new Person("Bob", 30);
+
+// 验证原型对象
+console.log(Person.prototype); // { sayHello: [Function: sayHello] }
+console.log(p1.age);
+
+//这个是公共的方法，所有的实例都可以调用
+p1.SayHello();
+
+
+
+// console.log(p1.__proto__ === Person.prototype); // true
+// console.log(p2.__proto__ === Person.prototype); // true
+
+  </script>
+</html>

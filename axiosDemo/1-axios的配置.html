@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div>
+        <button class="Get">Get</button><br>
+        <button class="Post">Post</button><br>
+        <button class="delete">delete</button><br>
+        <button class="put">put</button><br>
+    </div>
+
+    <script>
+        const btns = document.querySelectorAll('button');
+        // axios.defaults.baseURL = 'http://localhost:3000';
+        // axios.defaults.timeout = 1000;
+
+
+
+        //创建一个axios的实例
+        // const duanzi = axios.create({
+        //     baseURL: 'http://localhost:30001',
+        //     timeout: 1000
+        // })
+
+
+        // console.log(duanzi.defaults.baseURL);
+        // duanzi({
+        //     URL:'/posts',
+        // }).then(res=>{
+        //     console.log(res);
+        // })
+
+        // duanzi.get('/posts').then(res => { console.log(res); });
+
+
+
+        //请求拦截器: 在发送之前，对请求参数和内容做一些回调
+        //如果说都没有问题，再去发送请求；如果说有问题，那么这个请求就可以直接停止或者取消
+
+        axios.interceptors.request.use(function (config) {
+            console.log(config);
+
+
+            config.params = { id: 1 }
+
+            return config;
+
+            console.log('请求拦截器 成功');
+
+        }, function (error) {
+            debugger;
+            console.log('请求拦截器 失败');
+            return Promise.reject(error);
+        })
+
+
+        //响应拦截器
+        //在接收到响应数据之后，对数据进行一些处理
+        //如果说数据没有问题，那么就直接返回给用户
+        //如果说数据有问题，那么就直接返回给用户一个错误信息
+
+        axios.interceptors.response.use(function (response) {
+            console.log(response);
+            console.log('响应拦截器 成功');
+            return response.data;
+        },
+            function (error) {
+                console.log('响应拦截器zhu失败', error);
+                return Promise.reject(error);
+            }
+        )
+
+
+        let cancel;
+        //#region  原生axios发生请求
+        btns[0].onclick = function () {
+
+            //判断上一次的请求是不是完成，也就是看cancel是不是null
+            if (cancel != null) {
+                console.log('上一次的请求还没有完成');
+                cancel();
+            }
+
+            axios({
+                method: 'get',
+                url: 'http://localhost:3000/posts',
+                CANCELTOKEN: new axios.CancelToken(function (c) {
+                    console.log(c);
+                    cancel = c;
+
+                })
+
+            }).then(res => {
+                console.log(res);
+                cancel = null;//走到这里，就是请求回来了，就把cancel设置为null
+
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+
+        btns[1].onclick = function () {
+            axios({
+                method: 'post',
+                url: 'http://localhost:3000/posts',
+                //设置请求体
+
+                data: {
+                    title: '我是新增的数据',
+                    views: 10086,
+                    id: 4
+                }
+            }).then(res => {
+                console.log(res)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+
+        btns[2].onclick = function () {
+            axios({
+                method: 'delete',
+                url: 'http://localhost:3000/posts/e262'
+            }).then(res => {
+                console.log(res)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+
+        btns[3].onclick = function () {
+            axios({
+                method: 'put',
+                url: 'http://localhost:3000/posts/27e8',
+                //设置请求体
+                data: {
+                    title: '我是修改后的数据1212',
+                    views: 10086
+                }
+            }).then(res => {
+                console.log(res)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+        //#endregion
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    },
+    {
+      "title": "我是修改后的数据1212",
+      "views": 10086,
+      "id": "27e8"
+    },
+    {
+      "id": "e262",
+      "title": "我是新增的数据",
+      "views": 10086
+    },
+    {
+      "id": 4,
+      "title": "我是新增的数据",
+      "views": 10086
+    },
+    {
+      "id": "b0f1",
+      "title": "我是通过axios的post生成的数据",
+      "views": 100
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": null
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": null
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
