@@ -3,6 +3,7 @@
     <div>
         收到的pinia的count是： {{ store.mun }}<br>
         地址是:{{ store.address }}
+        
 
         <button @click="store.increment">增加</button>
     </div>
