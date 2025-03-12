@@ -22,12 +22,12 @@
     <hr>
     <div>
       <h2>组件pinpa</h2>
-      <count></count>
+      <!-- <count></count> -->
     </div>
     <hr>
     <div>
      
-      <LoveTalk></LoveTalk>
+      <!-- <LoveTalk></LoveTalk> -->
     </div>
   </div>
 </template>

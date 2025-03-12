@@ -40,4 +40,34 @@ function addTalk() {
     loveTalk.push({ id: id, content: `(${id}) 我想给你揉揉腿` })
 }
 
+
+
+
+
+// function demo(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {
+//     console.log(target);
+//     console.log(propertyKey);
+//     console.log(descriptor);
+// }
+// {
+
+
+// }
+
+// class Admin {
+//     @demo
+//     get address() {
+//         return '北京';
+//     }
+
+//     @demo
+//     get country() {
+//         return '中国';
+//     }
+// }
+
+
+
+
+
 </script>

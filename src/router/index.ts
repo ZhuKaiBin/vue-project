@@ -63,6 +63,44 @@ const router = createRouter({
       path: '/watch1',
       name: "watch1",
       component: () => import('../views/watch1.vue')
+    },
+    {
+      path: '/loveTalk',
+      name: "loveTalk",
+      component: () => import('../components/LoveTalk.vue')
+    },
+    {
+      path: '/father',
+      name: "father",
+      component: () => import('../components/father.vue')
+    },
+    {
+      path: '/buttooon',
+      name: "buttooon",
+      component: () => import('../components/elementUI/button.vue')
+    },
+    {
+      path: '/DateTimePicker',
+      name: "DateTimePicker",
+      component: () => import('../components/elementUI/DateTimePicker.vue')
+    }
+    ,
+    {
+      path: '/Table',
+      name: "Table",
+      component: () => import('../components/elementUI/Table.vue')
+    }
+    ,
+    {
+      path: '/A',
+      name: "A",
+      component: () => import('@/components/pinia/A.vue')
+    }
+    ,
+    {
+      path: '/B',
+      name: "B",
+      component: () => import('@/components/pinia/B.vue')
     }
   ]
 })

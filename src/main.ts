@@ -16,10 +16,10 @@ import * as ElementPlusIConsVue from '@element-plus/icons-vue'
 const app = createApp(App)
 
 
-//让图标生效
-for (const [key, component] of Object.entries(ElementPlusIConsVue)) {
-    app.component(key, component)
-}
+// //让图标生效
+// for (const [key, component] of Object.entries(ElementPlusIConsVue)) {
+//     app.component(key, component)
+// }
 
 //创建pinia实例，并将其插入到app中
 app.use(createPinia())
