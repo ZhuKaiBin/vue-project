@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
 </head>
@@ -19,6 +18,8 @@
 
     <script>
         const btns = document.querySelectorAll('button');
+
+        //defaults的用法
         // axios.defaults.baseURL = 'http://localhost:3000';
         // axios.defaults.timeout = 1000;
 
@@ -29,7 +30,6 @@
         //     baseURL: 'http://localhost:30001',
         //     timeout: 1000
         // })
-
 
         // console.log(duanzi.defaults.baseURL);
         // duanzi({
@@ -79,14 +79,14 @@
         )
 
 
-        let cancel;
+        let isCancel;
         //#region  原生axios发生请求
         btns[0].onclick = function () {
 
             //判断上一次的请求是不是完成，也就是看cancel是不是null
-            if (cancel != null) {
+            if (isCancel != null) {
                 console.log('上一次的请求还没有完成');
-                cancel();
+                isCancel();
             }
 
             axios({
@@ -94,13 +94,12 @@
                 url: 'http://localhost:3000/posts',
                 CANCELTOKEN: new axios.CancelToken(function (c) {
                     console.log(c);
-                    cancel = c;
-
+                    isCancel = c;
                 })
 
             }).then(res => {
                 console.log(res);
-                cancel = null;//走到这里，就是请求回来了，就把cancel设置为null
+                isCancel = null;//走到这里，就是请求回来了，就把cancel设置为null
 
             }).catch(err => {
                 console.log(err)

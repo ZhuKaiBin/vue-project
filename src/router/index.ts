@@ -1,3 +1,5 @@
+//这个路由ts最主要的就是createRouter，这里是根，指定要绑定的路由就行
+
 import { createRouter, createWebHistory } from 'vue-router'
 import vueIndex from '../views/index.vue'
 
