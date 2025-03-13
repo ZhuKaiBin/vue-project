@@ -1,0 +1,125 @@
+<html>
+<title></title>
+
+<body>
+    <p>1</p>
+    <p name="p2">21</p>
+
+    <p class="classP">classP</p>
+
+</body>
+
+<script>
+
+    //#region  函数的入参
+
+    //这里是会执行这个fun函数，在fun调用的时候，既fun()
+    // var fun = new Function("console.log(alert('Hello World2222'))")
+    // fun()
+
+    function console2(a, b) {
+        console.log('使用函数声明来创建的函数', a, b)
+    }
+
+    console2({ id: 8, name: 'lisi' }, 2)
+
+
+
+    // 定义一个 Person 类
+    class Person {
+        constructor(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+    }
+
+
+    // 函数声明,并且限制下参数的类型
+    function console3(a, b) {
+        // 检查 a 是否是 Person 类的实例
+        if (!(a instanceof Person)) {
+            console.error('a 必须是 Person 类的实例');
+            return;
+        }
+
+        // 检查 b 是否符合预期的接口
+        // 检查 b 是否是 number 或 string 类型
+        if (typeof b !== 'number' && typeof b !== 'string') {
+            console.error('b 必须是 number 或 string 类型');
+            return;
+        }
+
+        console.log('使用函数声明来创建的函数', a, b);
+    }
+
+    // 创建 Person 类的实例
+    const person = new Person(8, 'lisi');
+
+    console3(person, 'ture')
+
+    //#endregion
+
+    function getPersons() {
+        return [
+            new Person(1, 'bob'),
+            new Person(2, 'bob2'),
+            new Person(3, 'bob3'),
+            new Person(4, 'bob4'),
+        ]
+    }
+
+    console.log('List of Person:', getPersons());
+
+    // 返回一个 Person 实例的函数
+    function getPerson(id, name) {
+        // 返回一个 Person 实例
+        return new Person(id, name);
+    }
+
+    console.log('getPerson', getPerson(666, '猪八戒'))
+
+    // 返回一个 string 的函数
+    function getString() {
+        // 返回一个字符串
+        return 'Hello, World!';
+    }
+    console.log('getString', getString())
+
+    // 返回一个 boolean 的函数
+    function getBoolean() {
+        // 返回一个布尔值
+        return true;
+    }
+
+    console.log('getBoolean', getBoolean())
+
+
+    function getInfo(person) {
+
+        if (person instanceof Person) {
+            console.log(`id是${person.id}`, `名字是${person.name}`);
+        }
+        else {
+            console.log('输入的类型不对')
+        }
+
+
+    }
+    getInfo(person)
+    getInfo({ id: 22, name: '秦始皇' })
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
